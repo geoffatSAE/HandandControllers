@@ -6,11 +6,14 @@ public class TestingInput : MonoBehaviour
 {
     public GameObject cube;
     Renderer r;
+    public AudioClip soundFX;
+    AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
         r = cube.transform.gameObject.GetComponent<Renderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -34,7 +37,13 @@ public class TestingInput : MonoBehaviour
         {
 
             r.material.color = Color.cyan; //
-            OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.RTouch);
+
+            //Using an audio clip to play
+            audioSource.Play();
+
+            //create haptic clip and pass to right controller
+            OVRHapticsClip ovrClip = new OVRHapticsClip(soundFX);
+            OVRHaptics.RightChannel.Preempt(ovrClip);
 
         }
 
