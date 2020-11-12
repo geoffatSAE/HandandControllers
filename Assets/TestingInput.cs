@@ -39,6 +39,7 @@ public class TestingInput : MonoBehaviour
             r.material.color = Color.cyan; //
 
             //Using an audio clip to play
+            //message the object to play it's sound, or play __THIS__ sound
             audioSource.Play();
 
             //create haptic clip and pass to right controller
